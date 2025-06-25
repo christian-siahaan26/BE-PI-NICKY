@@ -1,4 +1,4 @@
-# Note App Backend
+# Presences App Backend
 
 This is the backend for a note-taking application built with Express.js.
 
@@ -63,11 +63,11 @@ This project follows a clean and organized structure, ensuring maintainability a
 
 ### Notes
 
-- `GET /api/notes` - Retrieve all notes
-- `POST /api/notes` - Create a new note
-- `GET /api/notes/:id` - Retrieve a specific note by ID
-- `PUT /api/notes/:id` - Update a specific note by ID
-- `PATCH /api/notes/:id` - Soft delete a specific note by ID
+- `GET /api/presences` - Retrieve all presences
+- `POST /api/presences` - Create a new presence
+- `GET /api/presences/:id` - Retrieve a specific presence by ID
+- `PUT /api/presences/:id` - Update a specific presence by ID
+- `PATCH /api/presences/:id` - Soft delete a specific presence by ID
 
 ## Getting Started
 
@@ -81,13 +81,13 @@ This project follows a clean and organized structure, ensuring maintainability a
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/Rafli-Dewanto/be-bootcamp-kilat.git note-app-backend
+git clone https://github.com/christian-siahaan26/BE-PI-NICKY.git note-app-backend
 ```
 
 2. Navigate to the project directory:
 
 ```sh
-cd note-app-backend
+cd presence-app-backend
 ```
 
 3. Install dependencies:
@@ -102,26 +102,40 @@ npm install
 
 ```mermaid
 erDiagram
-    USER {
-        Int id
+    LECTURER {
+        String nidk
         String name
-        String email
         String password
         DateTime createdAt
         DateTime updatedAt
-        Boolean isDeleted
     }
 
-    NOTE {
+    STUDENT {
+        Int npm
+        String name
+        String class
+        String major
+        DateTime createdAt
+        DateTime updatedAt
+    }
+
+    PRESENCE {
         Int id
-        String title
-        String content
+        String nidk
+        String nameLecturer
+        Int npm
+        String nameStudent
+        String class
+        String major
+        Boolean status
+        String description
+        String course
         DateTime createdAt
         DateTime updatedAt
         Boolean isDeleted
     }
 
-    USER ||--o{ NOTE : "has many"
+    LECTUER ||--o{ PRESENCE : "has many"
 ```
 
 1. Migrate prisma database:
